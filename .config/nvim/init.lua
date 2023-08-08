@@ -158,7 +158,9 @@ require('lazy').setup({
       'rafamadriz/friendly-snippets',
     },
   },
-
+  {
+    "github/copilot.vim",
+  },
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim',          opts = {} },
   {
@@ -201,15 +203,17 @@ require('lazy').setup({
     'navarasu/onedark.nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      -- vim.cmd.colorscheme 'onedark'
     end,
   },
-  -- {
-  --   'tanvirtin/monokai.nvim',
-  --   config = function ()
-  --     vim.cmd.colorscheme 'monokai'
-  --   end,
-  -- },
+  {
+    "loctvl842/monokai-pro.nvim",
+    config = function()
+      require('monokai-pro').setup()
+      vim.cmd.MonokaiPro 'classic'
+    end,
+
+  },
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -294,9 +298,10 @@ vim.opt.softtabstop = 4
 vim.opt.incsearch = true
 vim.opt.linebreak = true
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.opt.guicursor = "n-v-i:blinkwait700-blinkon400-blinkoff250"
+vim.opt.cursorline = true
 -- Set highlight on search
 vim.o.hlsearch = false
-
 -- Make line numbers default
 vim.wo.number = true
 
@@ -339,7 +344,8 @@ vim.o.termguicolors = true
 
 -- Marcus' Keymaps
 
-vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
+vim.keymap.set('n', '<leader>f', vim.cmd.Ex)
+vim.keymap.set('n', '<leader>p', '<cmd>e#<CR>')
 --
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- recommended mappings
