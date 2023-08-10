@@ -126,7 +126,7 @@ set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7: Git Kraken"
-set $ws8 "8: Docker"
+set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10: Environment Config"
 
@@ -156,7 +156,6 @@ bindsym $mod+Shift+0 move container to workspace  $ws10
 
 assign [class="firefox"] $ws1
 assign [class="GitKraken"] $ws7
-assign [class="Docker Desktop"] $ws8
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -194,6 +193,9 @@ bindsym $mod+Up resize grow height 10 px or 10 ppt
 bindsym $mod+Down resize shrink height 10 px or 10 ppt
 bindsym $mod+Left resize grow width 10 px or 10 ppt
 
+
+bindsym $mod+s scratchpad show
+bindsym $mod+Shift+s move scratchpad
 # smart_borders on
 # title_align center
 # for_window [class"^.*"] default_border pixel
@@ -210,26 +212,27 @@ client.unfocused $bg-color $bg-color $text-color $indicator $bg-color
 client.background #ffffff
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-
-        status_command i3status
-        position top
-
-        colors {
-        background #2f343f
-        statusline #2f343f
-        separator #4b5262
-
-        # colour of             border                  background              text
-        focused_workspace       $highlight-color        $bg-color               $text-color
-        active_workspace        $border-color           $bg-color               $text-color
-        inactive_workspace      $border-color           $bg-color               $text-color
-        urgent_workspace        $highlight-color        $highlight-color        $text-color
-    }
-}
+# bar {
+#
+#         status_command i3status
+#         position top
+#
+#         colors {
+#         background #2f343f
+#         statusline #2f343f
+#         separator #4b5262
+#
+#         # colour of             border                  background              text
+#         focused_workspace       $highlight-color        $bg-color               $text-color
+#         active_workspace        $border-color           $bg-color               $text-color
+#         inactive_workspace      $border-color           $bg-color               $text-color
+#         urgent_workspace        $highlight-color        $highlight-color        $text-color
+#     }
+# }
 
 focus_follows_mouse no
 exec_always --no-startup-id feh --bg-scale ~/.wallpaper.png
 exec_always setxkbmap -layout eu
 exec_always compton
 exec firefox
+exec_always $HOME/.config/polybar/launch.sh
